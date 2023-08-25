@@ -1,0 +1,30 @@
+.navbar {
+    background: linear-gradient(to bottom, #ac8227, #cc8214);
+    box-shadow: 0 10px 10px -10px rgba(255, 255, 255, 0.3) inset;
+    height: 80px; 
+}
+
+.nav-link {
+  margin: 0 20px;
+}
+
+.nav-link, .nav-item {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+  font-weight: bold; 
+  color: #D3D3D3;
+  text-transform: uppercase;  
+  display: flex;
+  align-items: center;
+}
+
+.icon-image {
+   width: 25px; 
+  height: 25px; 
+  margin: 0 10px; 
+}
+
+.icon-image-cart{
+  margin-left: 10px; 
+  margin-right: 20px; 
+}
+

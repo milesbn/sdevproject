@@ -1,0 +1,44 @@
+{% load static %}
+{% load cart_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link href="{% static 'main/global.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <link href="{% static 'cart/cart_style.css' %}" rel="stylesheet">
+</head>
+<body>
+{% include 'main/navbar.html' %}
+  <main class="main-holder">
+    <div class="container mt-5 mb-4">
+      <h1 class="trending-title">Checkout</h1>
+      <div class="row card-grid">
+        <div class="checkout text-center mt-3">
+          <h3 class="checkout-subtotal">Total: ${{ cart_total|floatformat:2 }}</h3>
+          
+          <form action="{% url 'checkout' %}" method="POST">
+            {% csrf_token %}
+            <script
+                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="{{ key }}"
+                data-amount="{{ cart_total|floatformat:2|mul:100 }}"
+                data-name="Curtain Store"
+                data-description="Total Payment"
+                data-image="{% static 'main/images/logo.png' %}"
+                data-locale="auto"
+                data-zip-code="false">
+            </script> 
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

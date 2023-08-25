@@ -1,0 +1,50 @@
+.login-holder {
+    background: linear-gradient(to bottom, #ac8227, #cc8214);
+    border-radius: 15px;
+    border: 1px solid #e2e2e2;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+    margin: 50px auto 20px auto;
+    padding: 5px;
+    max-width: 50%;
+    overflow: visible;
+}
+  
+.login-title {
+    padding: 1em;
+    font-size: 2em;
+    line-height: 1em;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 1px 1px 1px #000;
+    background-color: #c7c7c7;
+    background-size: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19),
+                0 6px  6px  rgba(0,0,0,0.23);
+    backface-visibility: hidden;
+}
+  
+.login-section {
+    background-color: #c7c7c7;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 15px;
+}
+  
+.signup-link a {
+    color: #007bff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+  
+.signup-link a:hover,
+.signup-link a:focus {
+    color: #0056b3;
+    text-decoration: underline;
+}

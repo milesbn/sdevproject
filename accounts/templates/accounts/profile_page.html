@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'main/global.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="{% static 'accounts/profile_page_style.css' %}">
+    <title>User Profile</title>
+</head>
+
+<body>
+    {% include 'main/navbar.html' %}
+    <main class="account-main-holder">
+        <h1 class="account-title">User Profile</h1>
+        <div class="account-card-grid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <label for="username">Username: </label><span>{{ user.username }}</span>
+                </div>
+                <div class="col-lg-6">
+                    <label for="email">Email: </label><span>{{ user.email }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Profile Details</h2>
+                    <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+                    <p>Bio: {{ user.profile.bio }}</p>
+                    <p>Location: {{ user.profile.location }}</p>
+                    <p>Date Joined: {{ user.date_joined }}</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+

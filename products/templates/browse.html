@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="{% static 'main/global.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link href="{% static 'products/browse_style.css' %}" rel="stylesheet">
+</head>
+<body>
+    {% include 'main/navbar.html' %}
+
+    <main class="main-holder">
+        <div class="container mt-5 mb-4">
+            <h1 class="trending-title">Browse Products</h1>
+            <div class="row">
+                <div class="col-lg-3 col-sm-12 filter-section">
+                    <h5 class="mb-3">Refine your search</h5>
+
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="search" placeholder="Search by Title" aria-label="Search">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="category-select" class="form-label">Type</label>
+                        <select class="form-control" id="category-select">
+                            <option selected>All Categories</option>
+                            <option value="Curtains">Curtains</option>
+                            <option value="Blinds">Blinds</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="developer-select" class="form-label">Developer</label>
+                        <select class="form-control" id="developer-select">
+                            <option selected>Material</option>
+                            <option value="1">Polyester</option>
+                            <option value="2">Cotton</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="customRange" class="form-label">Price Range</label>
+                        <input type="range" class="form-control-range" id="customRange" min="0" max="100" step="1">
+                    </div>
+                </div>
+
+                <div class="col-lg-9 col-sm-12 card-grid">
+                    <div class="row">
+                        {% for product in page_obj %}
+                            <div class="col-lg-2 col-sm-4">
+                                <a href="/product/{{ product.id }}" style="color:inherit;text-decoration:none">
+                                    <div class="card" id="card-product-{{ product.id }}">
+                                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ product.title }}</h5>
+                                            <p class="card-text">$ {{ product.price }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            {% if forloop.counter|divisibleby:6 or forloop.last %}
+                                </div>
+                                {% if not forloop.last %}
+                                     <div class="row">
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <nav aria-label="browse pagination">
+                <ul class="pagination justify-content-end">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                    {% else %}
+                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                    {% endif %}
+
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                            <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                    {% else %}
+                        <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

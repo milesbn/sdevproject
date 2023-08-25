@@ -1,0 +1,131 @@
+  .main-holder {
+    background: linear-gradient(to bottom, #ac8227, #cc8214);
+    border-radius: 15px;
+    border: 1px solid #e2e2e2;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+    margin: 50px auto 20px auto;
+    padding: 20px;
+    max-width: 70%;
+    overflow: visible;
+  }
+
+  .trending-title {
+    padding: 1em;
+    font-size: 2em;
+    line-height: 1em;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 1px 1px 1px #000;
+    background-color: #c7c7c7;
+    background-size: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19),
+                0 6px  6px  rgba(0,0,0,0.23);
+    backface-visibility: hidden;
+  }
+
+
+  .card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    width: 110%;
+    max-width: 120px;
+    margin-bottom: 30px;
+    
+  }
+
+  .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #c7c7c7; 
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+  }
+
+  .checkout {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+  }
+
+  .card img.card-img-top {
+    width: 100%;
+    height: 180px; 
+    border-radius: 15px 15px 0 0;
+    object-fit: cover; 
+    border-bottom: 5px solid #c7c7c7;
+  }
+    
+  .card-body {
+    background: white;
+    border-radius: 0 0 15px 15px;
+    text-align: center;
+    padding: 10px;  
+  }
+
+  .card-body .card-title {
+      font-size: .75em;  
+      font-weight: bolder;
+      overflow-wrap: break-word;
+      margin-bottom: 5px; 
+  }
+
+  .card-body .card-text {
+    font-size: .9em;  
+    overflow-wrap: break-word;
+    margin-top: 0.2rem;
+  }
+
+  .quantity-form {
+      display: inline-flex;
+      width: auto;
+  }
+
+  .quantity-form .input-group {
+      width: auto;
+  }
+
+  .quantity-form .quantity-minus, .quantity-form .quantity-plus {
+      padding: 0px 5px;
+  }
+
+  .quantity-form input {
+      width: 50px;
+  }
+  
+  .checkout-line {
+      width: 100%;
+      border-top: 4px solid #2ca5dd;
+      margin-bottom: 20px;
+      margin-top: 20px;
+  }
+
+  .checkout-subtotal {
+      padding: 1em;
+      font-size: 2em;
+      line-height: 1em;
+      letter-spacing: 0.1em;
+      color: #ffffff;
+      text-shadow: 1px 1px 1px #000;
+      background-size: cover;
+      backface-visibility: hidden;
+  }
+
+  .delete-button {
+    cursor: pointer; 
+    position: absolute; 
+    right: -10px; 
+    top: -10px; 
+    height: 24px; 
+    width: 24px;
+    border-radius: 50%; 
+    background: #ffffff;
+  }
+  

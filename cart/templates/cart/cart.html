@@ -1,0 +1,66 @@
+{% load static %}
+{% load cart_filters %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link href="{% static 'main/global.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet"> 
+    <link href="{% static 'cart/cart_style.css' %}" rel="stylesheet">`
+  </head>
+  <body>
+    {% include 'main/navbar.html' %}
+    <main class="main-holder">
+      <div class="container mt-5 mb-4">
+        <h1 class="trending-title">Shopping Cart</h1>
+        {% if cart %}
+            <div class="row card-grid">
+                {% for id, item in cart.items %}
+                {% with products|get_item:id as product %}
+                    <div class="col-lg-2 col-sm-4">
+                        <div class="card" id="card-product-{{ id }}">
+                            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.title }}</h5>
+                                <p class="card-text">
+                                    Quantity: 
+                                    <form method="post" action="{% url 'cart:update_cart' id=id %}" class="quantity-form">
+                                        {% csrf_token %}
+                                        <div class="input-group">
+                                            <button type="submit" class="quantity-minus btn btn-outline-secondary" name="action" value="decrease">-</button>
+                                            <input type="text" class="form-control" name="quantity" value="{{ item.quantity }}" readonly>
+                                            <button type="submit" the "quantity-plus btn btn-outline-secondary" name="action" value="increase">+</button>
+                                        </div>
+                                    </form>
+                                </p>
+                                <p class="card-text">Price: ${{ item.price }}</p>
+                            </div> 
+                        </div>
+                    </div>
+                {% endwith %}
+                {% endfor %}
+
+                <div class="checkout-line"></div>
+
+                <div class="checkout text-center mt-3">
+                  {% with cart|cart_total as total %}
+                  <h3 class="checkout-subtotal">Subtotal: ${{ total|floatformat:2 }}</h3>
+                  {% endwith %}
+                  <a href="{% url 'checkout' %}" class="btn btn-success">Checkout</a>
+                </div>
+                </div>
+            </div>
+          {% elif not cart %}
+            <h2 class="text-center"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Your cart is empty! </h2>
+          {% endif %}
+      </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

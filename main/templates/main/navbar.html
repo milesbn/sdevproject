@@ -1,0 +1,54 @@
+{% load static %}
+<link href="{% static 'main/navbar_style.css' %}" rel="stylesheet">
+
+
+<nav class="navbar navbar-expand-lg fixed-top pt-0 pb-0">
+    <a class="navbar-brand pl-3" href="{% url 'main:home' %}">
+        <img src="{% static 'main/images/logo.png' %}" width="75" height="75" 
+             class="d-inline-block align-top" alt="">
+    </a>
+
+   <button class="navbar-toggler" type="button" data-toggle="collapse" 
+           data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" 
+           aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+   </button>
+
+   <div class="collapse navbar-collapse" id="navbarNavDropdown">
+       <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'main:home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'products:browse' %}">Browse</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:profile_page' %}">Account</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item d-flex align-items-center">
+                <a href="{% url 'wishlist:wishlist_view' %}"><img src="{% static 'main/images/wishlist-icon.png' %}" 
+                alt="Wishlist" class="icon-image"></a>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+                <a href="{% url 'cart:cart' %}"><img src="{% static 'main/images/cart-icon.png' %}" 
+                alt="Cart" class="icon-image icon-image-cart"></a>
+            </li>
+
+            {% if request.user.is_authenticated %}
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
